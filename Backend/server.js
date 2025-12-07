@@ -1,6 +1,7 @@
 import express from "express";
 import { connectDB } from "../Backend/config/db.js";
 import authRoutes from './routes/auth.routes.js';
+import todoRoutes from './routes/todo.routes.js';
 import dotenv from 'dotenv';
 
 const app = express();
@@ -35,3 +36,6 @@ app.get("/", (req, res) => {
 
 //USER ROUTES
 app.use("/api/auth", authRoutes);
+
+//TODO ROUTES
+app.use("/api/todo", todoRoutes);
