@@ -1,5 +1,6 @@
 import express from "express";
 import { connectDB } from "../Backend/config/db.js";
+import authRoutes from './routes/auth.routes.js';
 import dotenv from 'dotenv';
 
 const app = express();
@@ -9,6 +10,9 @@ dotenv.config();
 
 //DB CONNECTION
 connectDB();
+
+// Parse JSON request bodies
+app.use(express.json());
 
 //TEST SERVER
 app.listen(5000, (err) => {
@@ -28,3 +32,6 @@ app.get("/", (req, res) => {
     console.log(`Error: ${error}`)
   }
 })
+
+//USER ROUTES
+app.use("/api/auth", authRoutes);
